@@ -59,16 +59,10 @@ impl fmt::Debug for AccelerationStructureCompatibilityKHR {
 }
 impl fmt::Debug for AccelerationStructureCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        const KNOWN: &[(Flags, &str)] = &[
-            (
-                AccelerationStructureCreateFlagsKHR::DEVICE_ADDRESS_CAPTURE_REPLAY.0,
-                "DEVICE_ADDRESS_CAPTURE_REPLAY",
-            ),
-            (
-                AccelerationStructureCreateFlagsKHR::RESERVED_2_NV.0,
-                "RESERVED_2_NV",
-            ),
-        ];
+        const KNOWN: &[(Flags, &str)] = &[(
+            AccelerationStructureCreateFlagsKHR::DEVICE_ADDRESS_CAPTURE_REPLAY.0,
+            "DEVICE_ADDRESS_CAPTURE_REPLAY",
+        )];
         debug_flags(f, KNOWN, self.0)
     }
 }
@@ -294,7 +288,6 @@ impl fmt::Debug for AccessFlags2KHR {
                 AccessFlags2KHR::COLOR_ATTACHMENT_READ_NONCOHERENT_EXT.0,
                 "COLOR_ATTACHMENT_READ_NONCOHERENT_EXT",
             ),
-            (AccessFlags2KHR::RESERVED_39_HUAWEI.0, "RESERVED_39_HUAWEI"),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -541,7 +534,6 @@ impl fmt::Debug for BufferUsageFlags {
                 BufferUsageFlags::SHADER_BINDING_TABLE_KHR.0,
                 "SHADER_BINDING_TABLE_KHR",
             ),
-            (BufferUsageFlags::RESERVED_18_QCOM.0, "RESERVED_18_QCOM"),
             (
                 BufferUsageFlags::VIDEO_ENCODE_DST_KHR.0,
                 "VIDEO_ENCODE_DST_KHR",
@@ -586,10 +578,6 @@ impl fmt::Debug for BuildAccelerationStructureFlagsKHR {
             (
                 BuildAccelerationStructureFlagsKHR::LOW_MEMORY.0,
                 "LOW_MEMORY",
-            ),
-            (
-                BuildAccelerationStructureFlagsKHR::RESERVED_5_NV.0,
-                "RESERVED_5_NV",
             ),
         ];
         debug_flags(f, KNOWN, self.0)
@@ -1023,7 +1011,6 @@ impl fmt::Debug for DescriptorBindingFlags {
                 DescriptorBindingFlags::VARIABLE_DESCRIPTOR_COUNT.0,
                 "VARIABLE_DESCRIPTOR_COUNT",
             ),
-            (DescriptorBindingFlags::RESERVED_4_QCOM.0, "RESERVED_4_QCOM"),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -1059,10 +1046,6 @@ impl fmt::Debug for DescriptorSetLayoutCreateFlags {
             (
                 DescriptorSetLayoutCreateFlags::PUSH_DESCRIPTOR_KHR.0,
                 "PUSH_DESCRIPTOR_KHR",
-            ),
-            (
-                DescriptorSetLayoutCreateFlags::RESERVED_3_AMD.0,
-                "RESERVED_3_AMD",
             ),
             (
                 DescriptorSetLayoutCreateFlags::HOST_ONLY_POOL_VALVE.0,
@@ -1382,14 +1365,6 @@ impl fmt::Debug for ExternalFenceHandleTypeFlags {
                 "OPAQUE_WIN32_KMT",
             ),
             (ExternalFenceHandleTypeFlags::SYNC_FD.0, "SYNC_FD"),
-            (
-                ExternalFenceHandleTypeFlags::RESERVED_4_NV.0,
-                "RESERVED_4_NV",
-            ),
-            (
-                ExternalFenceHandleTypeFlags::RESERVED_5_NV.0,
-                "RESERVED_5_NV",
-            ),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -1462,14 +1437,6 @@ impl fmt::Debug for ExternalMemoryHandleTypeFlags {
                 ExternalMemoryHandleTypeFlags::ZIRCON_VMO_FUCHSIA.0,
                 "ZIRCON_VMO_FUCHSIA",
             ),
-            (
-                ExternalMemoryHandleTypeFlags::RESERVED_12_NV.0,
-                "RESERVED_12_NV",
-            ),
-            (
-                ExternalMemoryHandleTypeFlags::RESERVED_13_NV.0,
-                "RESERVED_13_NV",
-            ),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -1526,14 +1493,6 @@ impl fmt::Debug for ExternalSemaphoreHandleTypeFlags {
             (
                 ExternalSemaphoreHandleTypeFlags::ZIRCON_EVENT_FUCHSIA.0,
                 "ZIRCON_EVENT_FUCHSIA",
-            ),
-            (
-                ExternalSemaphoreHandleTypeFlags::RESERVED_5_NV.0,
-                "RESERVED_5_NV",
-            ),
-            (
-                ExternalSemaphoreHandleTypeFlags::RESERVED_6_NV.0,
-                "RESERVED_6_NV",
             ),
         ];
         debug_flags(f, KNOWN, self.0)
@@ -1776,36 +1735,6 @@ impl fmt::Debug for Format {
             Self::ASTC_10X10_SFLOAT_BLOCK_EXT => Some("ASTC_10X10_SFLOAT_BLOCK_EXT"),
             Self::ASTC_12X10_SFLOAT_BLOCK_EXT => Some("ASTC_12X10_SFLOAT_BLOCK_EXT"),
             Self::ASTC_12X12_SFLOAT_BLOCK_EXT => Some("ASTC_12X12_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_3X3X3_UNORM_BLOCK_EXT => Some("ASTC_3X3X3_UNORM_BLOCK_EXT"),
-            Self::ASTC_3X3X3_SRGB_BLOCK_EXT => Some("ASTC_3X3X3_SRGB_BLOCK_EXT"),
-            Self::ASTC_3X3X3_SFLOAT_BLOCK_EXT => Some("ASTC_3X3X3_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_4X3X3_UNORM_BLOCK_EXT => Some("ASTC_4X3X3_UNORM_BLOCK_EXT"),
-            Self::ASTC_4X3X3_SRGB_BLOCK_EXT => Some("ASTC_4X3X3_SRGB_BLOCK_EXT"),
-            Self::ASTC_4X3X3_SFLOAT_BLOCK_EXT => Some("ASTC_4X3X3_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_4X4X3_UNORM_BLOCK_EXT => Some("ASTC_4X4X3_UNORM_BLOCK_EXT"),
-            Self::ASTC_4X4X3_SRGB_BLOCK_EXT => Some("ASTC_4X4X3_SRGB_BLOCK_EXT"),
-            Self::ASTC_4X4X3_SFLOAT_BLOCK_EXT => Some("ASTC_4X4X3_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_4X4X4_UNORM_BLOCK_EXT => Some("ASTC_4X4X4_UNORM_BLOCK_EXT"),
-            Self::ASTC_4X4X4_SRGB_BLOCK_EXT => Some("ASTC_4X4X4_SRGB_BLOCK_EXT"),
-            Self::ASTC_4X4X4_SFLOAT_BLOCK_EXT => Some("ASTC_4X4X4_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_5X4X4_UNORM_BLOCK_EXT => Some("ASTC_5X4X4_UNORM_BLOCK_EXT"),
-            Self::ASTC_5X4X4_SRGB_BLOCK_EXT => Some("ASTC_5X4X4_SRGB_BLOCK_EXT"),
-            Self::ASTC_5X4X4_SFLOAT_BLOCK_EXT => Some("ASTC_5X4X4_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_5X5X4_UNORM_BLOCK_EXT => Some("ASTC_5X5X4_UNORM_BLOCK_EXT"),
-            Self::ASTC_5X5X4_SRGB_BLOCK_EXT => Some("ASTC_5X5X4_SRGB_BLOCK_EXT"),
-            Self::ASTC_5X5X4_SFLOAT_BLOCK_EXT => Some("ASTC_5X5X4_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_5X5X5_UNORM_BLOCK_EXT => Some("ASTC_5X5X5_UNORM_BLOCK_EXT"),
-            Self::ASTC_5X5X5_SRGB_BLOCK_EXT => Some("ASTC_5X5X5_SRGB_BLOCK_EXT"),
-            Self::ASTC_5X5X5_SFLOAT_BLOCK_EXT => Some("ASTC_5X5X5_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_6X5X5_UNORM_BLOCK_EXT => Some("ASTC_6X5X5_UNORM_BLOCK_EXT"),
-            Self::ASTC_6X5X5_SRGB_BLOCK_EXT => Some("ASTC_6X5X5_SRGB_BLOCK_EXT"),
-            Self::ASTC_6X5X5_SFLOAT_BLOCK_EXT => Some("ASTC_6X5X5_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_6X6X5_UNORM_BLOCK_EXT => Some("ASTC_6X6X5_UNORM_BLOCK_EXT"),
-            Self::ASTC_6X6X5_SRGB_BLOCK_EXT => Some("ASTC_6X6X5_SRGB_BLOCK_EXT"),
-            Self::ASTC_6X6X5_SFLOAT_BLOCK_EXT => Some("ASTC_6X6X5_SFLOAT_BLOCK_EXT"),
-            Self::ASTC_6X6X6_UNORM_BLOCK_EXT => Some("ASTC_6X6X6_UNORM_BLOCK_EXT"),
-            Self::ASTC_6X6X6_SRGB_BLOCK_EXT => Some("ASTC_6X6X6_SRGB_BLOCK_EXT"),
-            Self::ASTC_6X6X6_SFLOAT_BLOCK_EXT => Some("ASTC_6X6X6_SFLOAT_BLOCK_EXT"),
             Self::G8_B8R8_2PLANE_444_UNORM_EXT => Some("G8_B8R8_2PLANE_444_UNORM_EXT"),
             Self::G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16_EXT => {
                 Some("G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16_EXT")
@@ -2205,8 +2134,6 @@ impl fmt::Debug for ImageUsageFlags {
                 ImageUsageFlags::VIDEO_DECODE_DPB_KHR.0,
                 "VIDEO_DECODE_DPB_KHR",
             ),
-            (ImageUsageFlags::RESERVED_16_QCOM.0, "RESERVED_16_QCOM"),
-            (ImageUsageFlags::RESERVED_17_QCOM.0, "RESERVED_17_QCOM"),
             (
                 ImageUsageFlags::FRAGMENT_DENSITY_MAP_EXT.0,
                 "FRAGMENT_DENSITY_MAP_EXT",
@@ -2227,7 +2154,6 @@ impl fmt::Debug for ImageUsageFlags {
                 ImageUsageFlags::VIDEO_ENCODE_DPB_KHR.0,
                 "VIDEO_ENCODE_DPB_KHR",
             ),
-            (ImageUsageFlags::RESERVED_18_HUAWEI.0, "RESERVED_18_HUAWEI"),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -2414,7 +2340,6 @@ impl fmt::Debug for MemoryHeapFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         const KNOWN: &[(Flags, &str)] = &[
             (MemoryHeapFlags::DEVICE_LOCAL.0, "DEVICE_LOCAL"),
-            (MemoryHeapFlags::RESERVED_2_KHR.0, "RESERVED_2_KHR"),
             (MemoryHeapFlags::MULTI_INSTANCE.0, "MULTI_INSTANCE"),
         ];
         debug_flags(f, KNOWN, self.0)
@@ -2457,7 +2382,6 @@ impl fmt::Debug for MemoryPropertyFlags {
                 MemoryPropertyFlags::DEVICE_UNCACHED_AMD.0,
                 "DEVICE_UNCACHED_AMD",
             ),
-            (MemoryPropertyFlags::RESERVED_8_NV.0, "RESERVED_8_NV"),
             (MemoryPropertyFlags::PROTECTED.0, "PROTECTED"),
         ];
         debug_flags(f, KNOWN, self.0)
@@ -2702,14 +2626,10 @@ impl fmt::Debug for PipelineBindPoint {
 }
 impl fmt::Debug for PipelineCacheCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        const KNOWN: &[(Flags, &str)] = &[
-            (PipelineCacheCreateFlags::RESERVED_1_EXT.0, "RESERVED_1_EXT"),
-            (
-                PipelineCacheCreateFlags::EXTERNALLY_SYNCHRONIZED_EXT.0,
-                "EXTERNALLY_SYNCHRONIZED_EXT",
-            ),
-            (PipelineCacheCreateFlags::RESERVED_2_KHR.0, "RESERVED_2_KHR"),
-        ];
+        const KNOWN: &[(Flags, &str)] = &[(
+            PipelineCacheCreateFlags::EXTERNALLY_SYNCHRONIZED_EXT.0,
+            "EXTERNALLY_SYNCHRONIZED_EXT",
+        )];
         debug_flags(f, KNOWN, self.0)
     }
 }
@@ -2768,8 +2688,6 @@ impl fmt::Debug for PipelineCreateFlags {
                 "ALLOW_DERIVATIVES",
             ),
             (PipelineCreateFlags::DERIVATIVE.0, "DERIVATIVE"),
-            (PipelineCreateFlags::RESERVED_21_AMD.0, "RESERVED_21_AMD"),
-            (PipelineCreateFlags::RESERVED_22_AMD.0, "RESERVED_22_AMD"),
             (
                 PipelineCreateFlags::RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_KHR.0,
                 "RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_KHR",
@@ -2820,9 +2738,6 @@ impl fmt::Debug for PipelineCreateFlags {
                 PipelineCreateFlags::EARLY_RETURN_ON_FAILURE_EXT.0,
                 "EARLY_RETURN_ON_FAILURE_EXT",
             ),
-            (PipelineCreateFlags::RESERVED_23_AMD.0, "RESERVED_23_AMD"),
-            (PipelineCreateFlags::RESERVED_10_AMD.0, "RESERVED_10_AMD"),
-            (PipelineCreateFlags::RESERVED_20_NV.0, "RESERVED_20_NV"),
             (
                 PipelineCreateFlags::VIEW_INDEX_FROM_DEVICE_INDEX.0,
                 "VIEW_INDEX_FROM_DEVICE_INDEX",
@@ -2890,10 +2805,7 @@ impl fmt::Debug for PipelineInputAssemblyStateCreateFlags {
 }
 impl fmt::Debug for PipelineLayoutCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        const KNOWN: &[(Flags, &str)] = &[(
-            PipelineLayoutCreateFlags::RESERVED_0_AMD.0,
-            "RESERVED_0_AMD",
-        )];
+        const KNOWN: &[(Flags, &str)] = &[];
         debug_flags(f, KNOWN, self.0)
     }
 }
@@ -2931,20 +2843,12 @@ impl fmt::Debug for PipelineShaderStageCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         const KNOWN: &[(Flags, &str)] = &[
             (
-                PipelineShaderStageCreateFlags::RESERVED_2_NV.0,
-                "RESERVED_2_NV",
-            ),
-            (
                 PipelineShaderStageCreateFlags::ALLOW_VARYING_SUBGROUP_SIZE_EXT.0,
                 "ALLOW_VARYING_SUBGROUP_SIZE_EXT",
             ),
             (
                 PipelineShaderStageCreateFlags::REQUIRE_FULL_SUBGROUPS_EXT.0,
                 "REQUIRE_FULL_SUBGROUPS_EXT",
-            ),
-            (
-                PipelineShaderStageCreateFlags::RESERVED_3_KHR.0,
-                "RESERVED_3_KHR",
             ),
         ];
         debug_flags(f, KNOWN, self.0)
@@ -3101,10 +3005,6 @@ impl fmt::Debug for PipelineStageFlags2KHR {
             ),
             (PipelineStageFlags2KHR::TASK_SHADER_NV.0, "TASK_SHADER_NV"),
             (PipelineStageFlags2KHR::MESH_SHADER_NV.0, "MESH_SHADER_NV"),
-            (
-                PipelineStageFlags2KHR::RESERVED_40_HUAWEI.0,
-                "RESERVED_40_HUAWEI",
-            ),
         ];
         debug_flags(f, KNOWN, self.0)
     }
@@ -3419,10 +3319,8 @@ impl fmt::Debug for RayTracingShaderGroupTypeKHR {
 }
 impl fmt::Debug for RenderPassCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        const KNOWN: &[(Flags, &str)] = &[
-            (RenderPassCreateFlags::RESERVED_0_KHR.0, "RESERVED_0_KHR"),
-            (RenderPassCreateFlags::TRANSFORM_QCOM.0, "TRANSFORM_QCOM"),
-        ];
+        const KNOWN: &[(Flags, &str)] =
+            &[(RenderPassCreateFlags::TRANSFORM_QCOM.0, "TRANSFORM_QCOM")];
         debug_flags(f, KNOWN, self.0)
     }
 }
@@ -3705,8 +3603,7 @@ impl fmt::Debug for ShaderInfoTypeAMD {
 }
 impl fmt::Debug for ShaderModuleCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        const KNOWN: &[(Flags, &str)] =
-            &[(ShaderModuleCreateFlags::RESERVED_0_NV.0, "RESERVED_0_NV")];
+        const KNOWN: &[(Flags, &str)] = &[];
         debug_flags(f, KNOWN, self.0)
     }
 }
@@ -4690,7 +4587,6 @@ impl fmt::Debug for StructureType {
             Self::DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV => {
                 Some("DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV")
             }
-            Self::RESERVED_QCOM => Some("RESERVED_QCOM"),
             Self::MEMORY_BARRIER_2_KHR => Some("MEMORY_BARRIER_2_KHR"),
             Self::BUFFER_MEMORY_BARRIER_2_KHR => Some("BUFFER_MEMORY_BARRIER_2_KHR"),
             Self::IMAGE_MEMORY_BARRIER_2_KHR => Some("IMAGE_MEMORY_BARRIER_2_KHR"),
