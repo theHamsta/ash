@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ash = { path = "../ash", version = "0.34" }
+ash = { path = "../ash", version = "0.37" }
 
 [dev-dependencies]
 winit = "0.26"
-ash-window = { path = "../ash-window", version = "0.8" }
+ash-window = { path = "../ash-window", version = "0.10" }
