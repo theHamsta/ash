@@ -55,15 +55,12 @@ pub struct App {
 impl App {
     pub fn new(window: &Window) -> Self {
         unsafe {
-            let entry = ash::Entry::new();
+            let entry = ash::Entry::default();
             let exts = ash_window::enumerate_required_extensions(&window).unwrap();
-            let ext_ptrs = exts
-                .iter()
-                .map(|x| x.as_ptr() as *const _)
-                .collect::<Vec<_>>();
+            let ext_ptrs = exts.iter().map(|x| *x as *const _).collect::<Vec<_>>();
             let instance = entry
                 .create_instance(
-                    &vk::InstanceCreateInfo::builder()
+                    &vk::InstanceCreateInfo::default()
                         .application_info(&vk::ApplicationInfo {
                             api_version: vk::make_api_version(0, 1, 0, 0),
                             ..Default::default()
@@ -101,12 +98,11 @@ impl App {
             let device = instance
                 .create_device(
                     physical_device,
-                    &vk::DeviceCreateInfo::builder()
+                    &vk::DeviceCreateInfo::default()
                         .enabled_extension_names(&[khr::Swapchain::name().as_ptr() as _])
-                        .queue_create_infos(&[vk::DeviceQueueCreateInfo::builder()
+                        .queue_create_infos(&[vk::DeviceQueueCreateInfo::default()
                             .queue_family_index(queue_family_index)
-                            .queue_priorities(&[1.0])
-                            .build()]),
+                            .queue_priorities(&[1.0])]),
                     None,
                 )
                 .unwrap();
@@ -133,7 +129,7 @@ impl App {
 
             let command_pool = device
                 .create_command_pool(
-                    &vk::CommandPoolCreateInfo::builder()
+                    &vk::CommandPoolCreateInfo::default()
                         .flags(
                             vk::CommandPoolCreateFlags::TRANSIENT
                                 | vk::CommandPoolCreateFlags::RESET_COMMAND_BUFFER,
@@ -144,7 +140,7 @@ impl App {
                 .unwrap();
             let cmds = device
                 .allocate_command_buffers(
-                    &vk::CommandBufferAllocateInfo::builder()
+                    &vk::CommandBufferAllocateInfo::default()
                         .command_pool(command_pool)
                         .level(vk::CommandBufferLevel::PRIMARY)
                         .command_buffer_count(swapchain.frames_in_flight() as u32),
@@ -196,7 +192,7 @@ impl App {
             device
                 .begin_command_buffer(
                     cmd,
-                    &vk::CommandBufferBeginInfo::builder()
+                    &vk::CommandBufferBeginInfo::default()
                         .flags(vk::CommandBufferUsageFlags::ONE_TIME_SUBMIT),
                 )
                 .unwrap();
@@ -217,7 +213,7 @@ impl App {
                 vk::DependencyFlags::default(),
                 &[],
                 &[],
-                &[vk::ImageMemoryBarrier::builder()
+                &[vk::ImageMemoryBarrier::default()
                     .dst_access_mask(vk::AccessFlags::TRANSFER_WRITE)
                     .src_queue_family_index(vk::QUEUE_FAMILY_IGNORED)
                     .dst_queue_family_index(vk::QUEUE_FAMILY_IGNORED)
@@ -230,8 +226,7 @@ impl App {
                         level_count: 1,
                         base_array_layer: 0,
                         layer_count: 1,
-                    })
-                    .build()],
+                    })],
             );
             let t = (self.epoch.elapsed().as_secs_f32().sin() + 1.0) * 0.5;
             device.cmd_clear_color_image(
@@ -258,7 +253,7 @@ impl App {
                 vk::DependencyFlags::default(),
                 &[],
                 &[],
-                &[vk::ImageMemoryBarrier::builder()
+                &[vk::ImageMemoryBarrier::default()
                     .src_access_mask(vk::AccessFlags::TRANSFER_WRITE)
                     .src_queue_family_index(vk::QUEUE_FAMILY_IGNORED)
                     .dst_queue_family_index(vk::QUEUE_FAMILY_IGNORED)
@@ -271,8 +266,7 @@ impl App {
                         level_count: 1,
                         base_array_layer: 0,
                         layer_count: 1,
-                    })
-                    .build()],
+                    })],
             );
 
             //
@@ -283,12 +277,11 @@ impl App {
             device
                 .queue_submit(
                     self.queue,
-                    &[vk::SubmitInfo::builder()
+                    &[vk::SubmitInfo::default()
                         .wait_semaphores(&[acq.ready])
                         .wait_dst_stage_mask(&[vk::PipelineStageFlags::TRANSFER])
                         .signal_semaphores(&[self.frames[acq.frame_index].complete])
-                        .command_buffers(&[cmd])
-                        .build()],
+                        .command_buffers(&[cmd])],
                     acq.complete,
                 )
                 .unwrap();
